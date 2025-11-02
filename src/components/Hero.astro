@@ -1,0 +1,121 @@
+---
+const heading = "Keep Your Lawn Lush, Bright & Beautiful";
+const subheading =
+  "Professional sprinkler, lighting, and drainage solutions that make your outdoor space thrive — all year long.";
+const ctaText = "Get a Quote";
+const ctaLink = "/contact";
+const callLink = "tel:+12263495797";
+const callText = "Call Us";
+import heroImage from "../assets/images/hero-image.jpeg";
+---
+
+<section class="hero" style={`background-image: url(${heroImage.src});`}>
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <h1>{heading}</h1>
+    <p>{subheading}</p>
+    <a href={ctaLink} class="cta-btn">✉ {ctaText}</a>
+    <a href={callLink} class="cta-btn-1">☎ {callText}</a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.4));
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 var(--space-md);
+    animation: fadeIn var(--transition-slow) ease;
+  }
+
+  .hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: var(--fw-bold);
+    margin-bottom: var(--space-sm);
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #e5e7eb;
+    margin-bottom: var(--space-md);
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .cta-btn,
+  .cta-btn-1 {
+    display: inline-block;
+    background: var(--color-primary);
+    color: white;
+    font-family: var(--font-body);
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.05em;
+    padding: 0.9rem 2rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-md);
+  }
+
+  .cta-btn-1 {
+    border: 2px solid var(--color-primary);
+    background: var(--color-surface);
+    color: var(--color-primary);
+  }
+
+  .cta-btn:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+  }
+  .cta-btn-1:hover {
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      height: 90vh;
+    }
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+    .hero-content p {
+      font-size: 1rem;
+    }
+  }
+</style>

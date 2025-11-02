@@ -1,0 +1,203 @@
+---
+const serviceHighlights = [
+  "Sprinkler system startups",
+  "Sprinkler system repairs",
+  "Sprinkler system re-configurations",
+  "Sprinkler system maintenance",
+  "Sprinkler system upgrades",
+  "Pump system maintenance",
+  "Sprinkler system winterizations",
+  "Sprinkler system design & installations",
+  "Landscape lighting design & installation",
+  "Landscape lighting repairs",
+  "Drainage services",
+  "Pressure washing services",
+];
+
+const locations = [
+  "Sarnia, Ontario",
+  "Point Edward, Ontario",
+  "Brights Grove, Ontario",
+  "Camlachie, Ontario",
+  "Corunna, Ontario",
+  "Petrolia, Ontario",
+  "Grand Bend, Ontario",
+  "and surrounding areas",
+];
+---
+
+<section id="about" class="about">
+  <div class="container">
+    <div class="about-content">
+      <div class="text">
+        <h2>About Lakeside Sprinklers</h2>
+        <p class="intro">
+          Residential and commercial irrigation and lighting contractor with
+          over <strong>20 years of experience</strong> in sprinkler systems and landscape
+          lighting solutions.
+        </p>
+        <div class="services">
+          <h3>Our Expertise</h3>
+          <ul>
+            {serviceHighlights.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+
+        <div class="locations">
+          <h3>Proudly Servicing</h3>
+          <ul>
+            {locations.map((loc) => <li>{loc}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      <div class="image-wrap">
+        <img
+          src="https://img1.wsimg.com/isteam/ip/333dd43b-a46e-4c6d-8335-e1029de85de1/E9DA9EC7-895F-40F2-AE9E-A72B70B5F4A4.jpeg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1535,m"
+          alt="Lakeside Sprinklers team at work"
+          loading="lazy"
+        />
+        <div class="experience-badge">
+          <span>20+</span>
+          <p>Years of Experience</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--color-bg);
+    padding: var(--space-xxl) 0;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+
+  .text h2 {
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+    font-size: var(--fs-h2);
+    margin-bottom: var(--space-sm);
+  }
+
+  .intro {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+  }
+
+  .services,
+  .locations {
+    margin-bottom: var(--space-lg);
+  }
+
+  .services h3,
+  .locations h3 {
+    font-size: var(--fs-h4);
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-heading);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.5rem 1.5rem;
+  }
+
+  li {
+    position: relative;
+    padding-left: 1.2rem;
+    font-family: var(--font-body);
+    color: var(--color-text);
+  }
+
+  li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+  }
+
+  .image-wrap {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .experience-badge {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: var(--color-primary);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    font-family: var(--font-heading);
+  }
+
+  .experience-badge span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .experience-badge p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 900px) {
+    .about-content {
+      grid-template-columns: 1fr;
+      /* text-align: center; */
+    }
+
+    ul {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* li {
+      padding-left: 0;
+    }
+
+    li::before {
+      display: none;
+    } */
+
+    .experience-badge {
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 1rem;
+    }
+  }
+</style>

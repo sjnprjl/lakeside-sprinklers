@@ -1,22 +1,30 @@
+---
+import { defaultSEO } from "../config";
+import "../styles/global.css";
+import { Font } from "astro:assets";
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="og:type" content={defaultSEO.type} />
+    <meta name="description" content={defaultSEO.description} />
+    <meta name="keywords" content={defaultSEO.keywords.join(", ")} />
+    <meta name="author" content={defaultSEO.author} />
+    <meta name="url" content={defaultSEO.siteUrl} />
+    <meta name="locale" content={defaultSEO.locale} />
+    <meta name="image" content={defaultSEO.image} />
+    <meta name="robots" content="index, follow" />
+    <meta name="google" content="index, follow" />
+    <Font cssVariable="--font-inter" preload />
+    <Font cssVariable="--font-poppins" preload />
+    <title>{defaultSEO.title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

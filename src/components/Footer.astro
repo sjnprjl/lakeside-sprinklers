@@ -1,0 +1,110 @@
+---
+import { defaultSEO } from "../config";
+import { Image } from "astro:assets";
+
+import TwitterIcon from "../assets/socials/twitter.svg";
+import InstagramIcon from "../assets/socials/instagram.svg";
+import FacebookIcon from "../assets/socials/facebook.svg";
+import YelpIcon from "../assets/socials/yelp.svg";
+
+const socials = [
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/107814161866115",
+    icon: FacebookIcon,
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/lakesidesprinklers",
+    icon: InstagramIcon,
+  },
+  {
+    name: "Twitter",
+    url: "https://www.x.com/LakesideSprink",
+    icon: TwitterIcon,
+  },
+  {
+    name: "Yelp",
+    url: "https://www.yelp.com/biz/EX0jmQzuujrNZZVwmUxkBQ",
+    icon: YelpIcon,
+  },
+];
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <!-- Logo / Branding -->
+  <div class="branding">
+    <h2>{defaultSEO.author}</h2>
+    <p>Serving Sarnia, Ontario and Surrounding Areas</p>
+  </div>
+
+  <!-- Social Icons -->
+  <div class="socials">
+    {
+      socials.map((social) => (
+        <a
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={social.name}
+        >
+          <Image src={social.icon} alt={social.name} />
+        </a>
+      ))
+    }
+  </div>
+
+  <!-- Copyright -->
+  <span class="copyright-text">
+    &copy; {currentYear} Your Company Name. All rights reserved.
+  </span>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-bg, #111827);
+    padding: var(--space-md) 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .footer h2 {
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+  }
+
+  .footer p {
+    margin-bottom: var(--space-xs);
+    color: var(--color-heading);
+  }
+
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .socials img {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+    stroke: currentColor;
+    transition: transform 0.2s ease;
+  }
+
+  .socials a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .socials img:hover {
+    transform: scale(1.2);
+  }
+  .copyright-text {
+    font-family: var(--font-body);
+    font-size: var(--fs-small);
+  }
+</style>

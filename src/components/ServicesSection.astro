@@ -1,0 +1,241 @@
+---
+const services = [
+  {
+    title: "Sprinklers - Irrigation",
+    subtitle: "Sprinkler system spray head watering the lawn",
+    image:
+      "https://img1.wsimg.com/isteam/stock/7835/:/cr=t:0%25,l:16.67%25,w:66.67%25,h:100%25/rs=w:600,h:600,cg:true",
+    features: [
+      "Sprinkler System Start Up",
+      "Sprinkler System Repairs",
+      "Sprinkler System Upgrades",
+      "Sprinkler System Mid-season Adjustments",
+      "Sprinkler System Re-configurations",
+      "Sprinkler System Installations",
+      "Sprinkler System Winterizations",
+    ],
+    description:
+      "Allow us to get your home or business sprinkler system installed, repaired or upgraded to run efficiently for you this season — Give us a call today or click the chat bubble & send us a message to schedule your appointment.",
+    warranty: "Guaranteed Warranty On All New Parts And Service",
+  },
+  {
+    title: "Landscape Lighting - Outdoor Lighting",
+    subtitle:
+      "Landscape lighting illuminating trees and gardens, Sarnia, Ontario",
+    image:
+      "https://img1.wsimg.com/isteam/ip/333dd43b-a46e-4c6d-8335-e1029de85de1/6619AA71-A08E-459B-B7DA-23BB9F400B72.jpeg/:/cr=t:12.5%25,l:0%25,w:100%25,h:75%25/rs=w:600,h:300,cg:true",
+    features: [
+      "Landscape Lighting Design",
+      "Landscape Lighting Installation",
+      "Landscape Lighting Upgrades",
+      "Landscape Lighting Repairs",
+    ],
+    description:
+      "Allow us to take care of all of your outdoor lighting — landscape lighting at your home or business. We have you covered for design, installation, repairs and upgrades.",
+    warranty: "Guaranteed Warranty On All New Parts And Service",
+  },
+  {
+    title: "Drainage Systems",
+    image: "https://img1.wsimg.com/isteam/ip/333dd43b-a46e-4c6d-8335-e1029de85de1/C9B6FC83-43C8-4EF9-870C-903545DC8C52.jpeg/:/rs=w:400,cg:true,m",
+    subtitle: "Drainage installation — Drainage cleaning — Drainage repairs",
+    features: [
+      "Drainage Installation",
+      "Drainage Cleaning / Flushing",
+      "Drainage Repairs",
+      "Downspout Drainage",
+      "Perimeter Drainage",
+      "Wet Basement Repair",
+      "Wet Yard Repair",
+    ],
+    description:
+      "Residential drainage is an essential aspect of home ownership that shouldn't be overlooked. It safeguards your property from water-related issues, ensuring your home's structural integrity and your family's safety. If you're facing drainage problems or want to prevent them, consider a professional assessment for drainage installation, drainage cleaning/flushing or drainage repairs.",
+    cta: "Give us a call today for a free estimate",
+  },
+  {
+    title: "Pressure Washing",
+    image:
+      "https://img1.wsimg.com/isteam/stock/11734/:/rs=w:1535,m",
+    subtitle:
+      "Professional exterior cleaning services for driveways, patios, siding, and more.",
+    features: [
+      "Driveway Pressure Washing",
+      "Patio and Deck Pressure Washing",
+      "House and Siding Washing",
+      "Commercial Pressure Cleaning",
+    ],
+    description:
+      "Revitalize your home or business exterior with our professional pressure washing services. We remove dirt, mold, and grime to restore your property’s beauty and curb appeal.",
+    cta: "Book your cleaning service today",
+  },
+];
+---
+
+<section class="services">
+  <div class="container">
+    {
+      services.map((service, index) => (
+        <div class={`service-block ${index % 2 !== 0 ? "reverse" : ""}`}>
+          <div class="image-wrap">
+            <img src={service.image} alt={service.title} loading="lazy" />
+          </div>
+
+          <div class="content">
+            <h2>{service.title}</h2>
+            <p class="subtitle">{service.subtitle}</p>
+
+            <ul class="features">
+              {service.features.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+
+            <p class="description">{service.description}</p>
+
+            <div class="cta">
+              <a href="/contact" class="btn-primary">Get a Quote
+              </a>
+              <p class="warranty">{service.warranty}</p>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .services {
+    background: var(--color-bg-alt);
+    padding: var(--space-xxl) 0;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xxl);
+  }
+
+  .service-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+
+  .service-block.reverse {
+    direction: rtl;
+  }
+
+  .service-block.reverse .content {
+    direction: ltr;
+  }
+
+  .image-wrap {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .image-wrap:hover img {
+    transform: scale(1.05);
+  }
+
+  .content h2 {
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+    font-size: var(--fs-h2);
+    margin-bottom: var(--space-xs);
+  }
+
+  .subtitle {
+    color: var(--color-text-light);
+    font-family: var(--font-body);
+    margin-bottom: var(--space-md);
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    list-style: none;
+    margin: 0 0 var(--space-md);
+    padding: 0;
+  }
+
+  .features li {
+    background: var(--color-surface);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+  }
+
+  .features li:hover {
+    background: var(--color-primary-light);
+    color: var(--color-surface);
+  }
+
+  .description {
+    margin-bottom: var(--space-md);
+    color: var(--color-text);
+    font-family: var(--font-body);
+  }
+
+  .cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    border: none;
+    text-decoration: none;
+    color: var(--color-bg);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1.5rem;
+    font-size: var(--fs-btn);
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    transition:
+      background 0.3s ease,
+      transform 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    /* background: var(--color-primary-dark); */
+    transform: translateY(-2px);
+  }
+
+  .warranty {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-style: italic;
+  }
+
+  @media (max-width: 900px) {
+    .service-block {
+      grid-template-columns: 1fr;
+    }
+
+    .service-block.reverse {
+      direction: ltr;
+    }
+
+    .image-wrap {
+      order: -1;
+    }
+  }
+</style>

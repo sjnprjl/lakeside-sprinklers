@@ -1,0 +1,146 @@
+---
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Swiper, SwiperSlide, SwiperWrapper } from "astro-swiper";
+
+const imageList = import.meta.glob("../assets/images/gallery/*", {
+  eager: true,
+});
+const images = Object.values(imageList).map((img: any) => ({
+  src: img.default.src,
+}));
+---
+
+<section class="gallery">
+  <div class="container">
+    <h2>Our Work</h2>
+    <p class="subtitle">
+      A glimpse of our recent sprinkler and landscape projects
+    </p>
+
+    <Swiper
+      options={{
+        spaceBetween: 20,
+        slidesPerView: 1,
+        navigation: true,
+        pagination: { clickable: true },
+        loop: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: true,
+          waitForTransition: false,
+        },
+        // breakpoints: {
+        //   640: { slidesPerView: 1.2 },
+        //   768: { slidesPerView: 2 },
+        //   1024: { slidesPerView: 3 },
+        // },
+      }}
+      class="gallery-swiper"
+    >
+      <SwiperWrapper>
+        {
+          images.map((img) => (
+            <SwiperSlide>
+              <div class="slide" style=`--bg-img: url(${img.src})`>
+                <img src={img.src} alt="" loading="lazy" />
+              </div>
+            </SwiperSlide>
+          ))
+        }
+      </SwiperWrapper>
+    </Swiper>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    background: var(--color-bg);
+    padding: var(--space-xl) 0;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+    text-align: center;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    color: var(--color-heading);
+    margin-bottom: var(--space-xs);
+  }
+
+  .subtitle {
+    color: var(--color-text-light);
+    font-family: var(--font-body);
+    margin-bottom: var(--space-lg);
+  }
+
+  .gallery-swiper {
+    width: 100%;
+    padding-bottom: var(--space-md);
+  }
+
+  .slide {
+    /* background: var(--color-text); */
+    /* background: linear-gradient(135deg, #dce8e0, #f5f9f6); */
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    position: relative;
+  }
+  .slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:  var(--bg-img) center / cover no-repeat;
+    filter: blur(5px) brightness(0.9);
+    transform: scale(1.1); /* prevents edge clipping of blur */
+    z-index: 0;
+    transition: filter var(--transition-fast);
+  }
+
+  .slide:hover img {
+    transform: scale(1.02);
+  }
+  .slide:hover::before {
+    filter: blur(5px) brightness(0.8);
+  }
+
+  .slide img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    display: block;
+    z-index: 1;
+    position: relative;
+    transition: transform var(--transition-fast);
+  }
+
+  /* Pagination and nav arrow styling */
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: var(--color-primary);
+  }
+
+  .swiper-pagination-bullet {
+    background: var(--color-primary-light);
+    opacity: 0.7;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: var(--color-primary);
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .slide img {
+      height: 220px;
+    }
+  }
+</style>

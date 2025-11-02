@@ -1,0 +1,146 @@
+/* Root styles */
+:root {
+  /* ========== Colors ========== */
+  --color-primary: #2e8b57; /* Spruce Green - main brand */
+  --color-primary-light: #44a172; /* lighter accent for hover */
+  --color-primary-dark: #1f6241; /* darker shade for depth */
+
+  --color-bg: #f9fafb; /* light neutral background */
+  --color-surface: #ffffff; /* card/section background */
+  --color-border: #e5e7eb; /* subtle divider */
+  --color-text: #1f2937; /* dark gray for body text */
+  --color-text-light: #4b5563; /* secondary text */
+  --color-heading: #0b3d2e; /* deeper green for headings */
+
+  --color-error: #dc2626;
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+
+  /* ========== Typography ========== */
+  --font-heading: var(--font-poppins);
+  --font-body: var(--font-inter);
+
+  --fs-h1: clamp(2rem, 5vw, 3.25rem);
+  --fs-h2: clamp(1.75rem, 4vw, 2.5rem);
+  --fs-h3: clamp(1.5rem, 3vw, 2rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* ========== Layout & Spacing ========== */
+  --max-width: 1200px;
+  --nav-height: 80px;
+
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-xxl: 5rem;
+
+  /* ========== Border & Radius ========== */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-round: 999px;
+
+  /* ========== Shadows ========== */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+
+  /* ========== Transitions ========== */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-slow: 0.4s ease-in-out;
+}
+
+strong {
+  color: var(--color-primary);
+  font-family: var(--font-body);
+}
+
+/* Resets: copied from (https://www.joshwcomeau.com/css/custom-css-reset/) */
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
