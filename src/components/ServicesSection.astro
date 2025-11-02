@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 const services = [
   {
     title: "Sprinklers - Irrigation",
@@ -70,17 +72,18 @@ const services = [
 ];
 ---
 
-<section class="services">
+<section id="offers" class="services">
+  <h2 class="heading">Our Services</h2>
   <div class="container">
     {
       services.map((service, index) => (
         <div class={`service-block ${index % 2 !== 0 ? "reverse" : ""}`}>
           <div class="image-wrap">
-            <img src={service.image} alt={service.title} loading="lazy" />
+            <Image width={600} height={600} src={service.image} alt={service.title} loading="lazy" />
           </div>
 
           <div class="content">
-            <h2>{service.title}</h2>
+            <h3>{service.title}</h3>
             <p class="subtitle">{service.subtitle}</p>
 
             <ul class="features">
@@ -104,7 +107,16 @@ const services = [
 <style>
   .services {
     background: var(--color-bg-alt);
-    padding: var(--space-xxl) 0;
+    padding: var(--space-sm) 0;
+  }
+
+  h2.heading {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    color: var(--color-heading);
+    margin-bottom: var(--space-md);
+    text-align: center;
   }
 
   .container {
@@ -119,7 +131,6 @@ const services = [
   .service-block {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
     gap: var(--space-xl);
   }
 
@@ -134,6 +145,7 @@ const services = [
   .image-wrap {
     border-radius: var(--radius-lg);
     overflow: hidden;
+    height: min-content;
     box-shadow: var(--shadow-lg);
   }
 
@@ -148,10 +160,10 @@ const services = [
     transform: scale(1.05);
   }
 
-  .content h2 {
+  .content h3 {
     font-family: var(--font-heading);
     color: var(--color-heading);
-    font-size: var(--fs-h2);
+    font-size: var(--fs-h3);
     margin-bottom: var(--space-xs);
   }
 
@@ -233,7 +245,7 @@ const services = [
     }
 
     .image-wrap {
-      order: -1;
+      order: 2;
     }
   }
 </style>

@@ -9,18 +9,30 @@ const callText = "Call Us";
 import heroImage from "../assets/images/hero-image.jpeg";
 ---
 
-<section class="hero" style={`background-image: url(${heroImage.src});`}>
+<section
+  id="home"
+  class="hero"
+  style={`background-image: url(${heroImage.src});`}
+>
   <div class="overlay"></div>
 
   <div class="hero-content">
     <h1>{heading}</h1>
     <p>{subheading}</p>
-    <a href={ctaLink} class="cta-btn">✉ {ctaText}</a>
-    <a href={callLink} class="cta-btn-1">☎ {callText}</a>
+    <div class="ctas">
+      <a href={ctaLink} class="cta-btn">✉ {ctaText}</a>
+      <a href={callLink} class="cta-btn-1">☎ {callText}</a>
+    </div>
   </div>
 </section>
 
 <style>
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
   .hero {
     position: relative;
     width: 100%;
@@ -69,6 +81,8 @@ import heroImage from "../assets/images/hero-image.jpeg";
 
   .cta-btn,
   .cta-btn-1 {
+    flex: 1 1 calc(50% - 0.5rem); /* 2 buttons per row */
+    min-width: 200px; /* Wraps to 1 per row when too small */
     display: inline-block;
     background: var(--color-primary);
     color: white;

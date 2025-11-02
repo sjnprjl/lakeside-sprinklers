@@ -28,3 +28,21 @@ import { Font } from "astro:assets";
     <slot />
   </body>
 </html>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(
+        (anchor as any).getAttribute("href")
+      );
+      const offset = 80;
+      const targetPosition = target.offsetTop - offset;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+    });
+  });
+</script>
