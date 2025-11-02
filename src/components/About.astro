@@ -30,7 +30,7 @@ const locations = [
   <div class="container">
     <div class="about-content">
       <div class="text">
-        <h2>About Lakeside Sprinklers</h2>
+        <h2>About Us</h2>
         <p class="intro">
           Residential and commercial irrigation and lighting contractor with
           over <strong>20 years of experience</strong> in sprinkler systems and landscape
@@ -68,8 +68,8 @@ const locations = [
 
 <style>
   .about {
-    background: var(--color-bg);
-    padding: var(--space-xxl) 0;
+    background: var(--color-surface);
+    padding: var(--space-sm) 0;
   }
 
   .container {
@@ -81,7 +81,6 @@ const locations = [
   .about-content {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
     gap: var(--space-xl);
   }
 
@@ -142,6 +141,7 @@ const locations = [
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
+    height: max-content;
   }
 
   .image-wrap img {
@@ -157,7 +157,7 @@ const locations = [
     left: 1rem;
     background: var(--color-primary);
     color: white;
-    padding: 1rem 1.5rem;
+    padding: 0.6rem 1.2rem;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
     text-align: center;
@@ -166,7 +166,7 @@ const locations = [
 
   .experience-badge span {
     display: block;
-    font-size: 2.5rem;
+    font-size: clamp(1rem, 2.4vw,  2.5rem);
     font-weight: 700;
     line-height: 1;
   }
@@ -179,25 +179,6 @@ const locations = [
   @media (max-width: 900px) {
     .about-content {
       grid-template-columns: 1fr;
-      /* text-align: center; */
-    }
-
-    ul {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    /* li {
-      padding-left: 0;
-    }
-
-    li::before {
-      display: none;
-    } */
-
-    .experience-badge {
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 1rem;
     }
   }
 </style>

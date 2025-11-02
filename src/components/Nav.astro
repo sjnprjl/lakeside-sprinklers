@@ -1,11 +1,14 @@
 ---
 import logo from "../assets/images/logo.webp";
 const links = [
-  { name: "Home", href: "/" },
+  { name: "Home", href: "#home" },
   { name: "About Us", href: "#about" },
-  { name: "Our Services", href: "#" },
+  { name: "Work", href: "#work" },
+  { name: "Our Services", href: "#offers" },
   { name: "Contact Us", href: "#" },
 ];
+import HamIcon from "../assets/ham.svg";
+import { Image } from "astro:assets";
 ---
 
 <nav class="navbar">
@@ -14,17 +17,9 @@ const links = [
       <img src={logo.src} alt="Lakeside Sprinklers logo" />
     </a>
 
-    <!-- <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <path d="M3 6h18M3 12h18M3 18h18"></path>
-      </svg>
-    </button> -->
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+      <Image src={HamIcon} alt="Toggle navigation" />
+    </button>
 
     <ul class="nav-links" id="nav-links">
       {
@@ -38,11 +33,16 @@ const links = [
   </div>
 
   <script>
-    // const toggle = document.getElementById("menu-toggle");
-    // const links = document.getElementById("nav-links");
-    // toggle?.addEventListener("click", () => {
-    //   links.classList.toggle("open");
-    // });
+    const toggle = document.getElementById("menu-toggle");
+    const links = document.getElementById("nav-links");
+    if (!links) throw new Error("Nav links not found");
+    toggle?.addEventListener("click", () => {
+      links.classList.toggle("open");
+    });
+
+    links.addEventListener("click", (e) => {
+      links.classList.toggle("open");
+    });
   </script>
 </nav>
 
@@ -131,6 +131,12 @@ const links = [
       display: block;
     }
 
+    .logo img {
+      width: auto;
+      height: 100%;
+      max-height: 45px;
+    }
+
     .nav-links {
       position: absolute;
       top: var(--nav-height);
@@ -143,22 +149,15 @@ const links = [
       gap: var(--space-sm);
       box-shadow: var(--shadow-md);
       display: none;
+      height: calc(100vh - var(--nav-height));
+      transform: translateX(-100%) !important;
+      opacity: 0 !important;
+      transition: all var(--transition-fast);
     }
 
     .nav-links.open {
-      display: flex;
-      animation: slideDown var(--transition-slow) ease;
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      transform: translateX(0) !important;
+      opacity: 1 !important;
     }
   }
 </style>

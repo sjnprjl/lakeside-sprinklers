@@ -3,16 +3,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide, SwiperWrapper } from "astro-swiper";
+import { Image } from "astro:assets";
 
 const imageList = import.meta.glob("../assets/images/gallery/*", {
   eager: true,
 });
 const images = Object.values(imageList).map((img: any) => ({
-  src: img.default.src,
+  src: img.default,
 }));
 ---
 
-<section class="gallery">
+<section id="work" class="gallery">
   <div class="container">
     <h2>Our Work</h2>
     <p class="subtitle">
@@ -43,8 +44,8 @@ const images = Object.values(imageList).map((img: any) => ({
         {
           images.map((img) => (
             <SwiperSlide>
-              <div class="slide" style=`--bg-img: url(${img.src})`>
-                <img src={img.src} alt="" loading="lazy" />
+              <div class="slide" style=`--bg-img: url(${img.src.src})`>
+                <Image width={600} height={600} inferSize src={img.src} alt="" loading="lazy" />
               </div>
             </SwiperSlide>
           ))
@@ -57,7 +58,7 @@ const images = Object.values(imageList).map((img: any) => ({
 <style>
   .gallery {
     background: var(--color-bg);
-    padding: var(--space-xl) 0;
+    padding: var(--space-sm) 0;
   }
 
   .container {
