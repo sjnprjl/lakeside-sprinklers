@@ -8,13 +8,23 @@ export default defineConfig({
       {
         provider: fontProviders.google(),
         name: "Inter",
-        cssVariable: "--font-inter",
+        cssVariable: "--font-body",
       },
       {
         provider: fontProviders.google(),
         name: "Poppins",
-        cssVariable: "--font-poppins",
+        cssVariable: "--font-heading",
       },
+      // {
+      //   provider: fontProviders.google(),
+      //   name: "Montserrat",
+      //   cssVariable: "--font-heading",
+      // },
+      // {
+      //   provider: fontProviders.google(),
+      //   name: "Lato",
+      //   cssVariable: "--font-body",
+      // },
     ],
   },
 });

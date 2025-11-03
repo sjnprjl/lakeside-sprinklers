@@ -5,7 +5,7 @@ const links = [
   { name: "About Us", href: "#about" },
   { name: "Work", href: "#work" },
   { name: "Our Services", href: "#offers" },
-  { name: "Contact Us", href: "#" },
+  { name: "Contact Us", href: "#contact" },
 ];
 import HamIcon from "../assets/ham.svg";
 import { Image } from "astro:assets";
@@ -14,7 +14,7 @@ import { Image } from "astro:assets";
 <nav class="navbar">
   <div class="nav-container">
     <a href="#home" class="logo">
-      <img src={logo.src} alt="Lakeside Sprinklers logo" />
+      <Image src={logo} alt="Lakeside Sprinklers logo" loading="eager" />
     </a>
 
     <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
@@ -153,6 +153,16 @@ import { Image } from "astro:assets";
       transform: translateX(-100%) !important;
       opacity: 0 !important;
       transition: all var(--transition-fast);
+
+      li {
+        display: block;
+        width: 100%;
+        text-align: center;
+
+        a {
+          display: block;
+        }
+      }
     }
 
     .nav-links.open {
