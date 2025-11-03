@@ -28,15 +28,15 @@ const images = Object.values(imageList).map((img: any) => ({
         pagination: { clickable: true },
         loop: true,
         autoplay: {
-          delay: 2500,
+          delay: 1600,
           disableOnInteraction: true,
           waitForTransition: false,
         },
-        // breakpoints: {
-        //   640: { slidesPerView: 1.2 },
-        //   768: { slidesPerView: 2 },
-        //   1024: { slidesPerView: 3 },
-        // },
+        breakpoints: {
+          640: { slidesPerView: 1.2 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        },
       }}
       class="gallery-swiper"
     >
